@@ -62,6 +62,9 @@ func (b *InsertBuilder) ToCql() (stmt string, names []string) {
 
 	if b.unique {
 		cql.WriteString("IF NOT EXISTS ")
+
+		// INSERT does not support IF NOT EXISTS and USING TIMESTAMP in the same statement:
+		b.using.timestamp = false
 	}
 	names = append(names, b.using.writeCql(&cql)...)
 
