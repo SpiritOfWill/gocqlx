@@ -23,11 +23,12 @@ func placeholders(cql *bytes.Buffer, count int) {
 }
 
 // TTL converts duration to format expected in USING TTL clause.
-func TTL(d time.Duration) int64 {
-	return int64(d.Seconds())
+func TTL(d time.Duration) int32 {
+	return int32(d.Seconds())
 }
 
 // Timestamp converts time to format expected in USING TIMESTAMP clause.
 func Timestamp(t time.Time) int64 {
+	// TODO: return Timestamp as ISO 8601
 	return t.UnixNano() / 1000
 }

@@ -9,6 +9,7 @@ package qb
 
 import (
 	"bytes"
+	"time"
 )
 
 // initializer specifies an value for a column in an insert operation.
@@ -129,7 +130,7 @@ func (b *InsertBuilder) Timestamp() *InsertBuilder {
 }
 
 // TTL sets a USING TTL clause on the query.
-func (b *InsertBuilder) TTL() *InsertBuilder {
+func (b *InsertBuilder) TTL(d time.Duration) *InsertBuilder {
 	b.using.ttl = true
 	return b
 }

@@ -49,7 +49,7 @@ func TestInsertBuilder(t *testing.T) {
 		},
 		// Add TTL
 		{
-			B: Insert("cycling.cyclist_name").Columns("id", "user_uuid", "firstname").TTL(),
+			B: Insert("cycling.cyclist_name").Columns("id", "user_uuid", "firstname").TTL(123),
 			S: "INSERT INTO cycling.cyclist_name (id,user_uuid,firstname) VALUES (?,?,?) USING TTL ? ",
 			N: []string{"id", "user_uuid", "firstname", "_ttl"},
 		},
